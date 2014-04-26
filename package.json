@@ -1,7 +1,7 @@
 {
   "name": "server",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Webserver for the guesstimate apps",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,6 +10,10 @@
   "repository": {
     "type": "git",
     "url": "git@heroku.com:guesstimequestionserver.git"
+  },
+  "dependencies":{
+    "express": "4.1.0 ",
+    "logfmt": "1.1.2"
   },
   "author": "Eric Weaver",
   "license": "ISC"
