@@ -1,6 +1,6 @@
 module.exports = {
     server: {
-        port: 80
+        port: 5000
     },
     redis: {
         url: "redis://pub-redis-19367.us-east-1-2.1.ec2.garantiadata.com",
