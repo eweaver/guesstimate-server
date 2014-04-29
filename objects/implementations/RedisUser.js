@@ -74,7 +74,9 @@ var RedisUser = function(redisConfig, id) {
      * @param {Function} callback
      */
     this.init = function(id, callback) {
+        console.log(id);
         _redisClient.hgetall(id, function(err, userObject) {
+            console.log(userObject);
             if(err === null) {
                 _isLoaded = true;
                 _id = id;

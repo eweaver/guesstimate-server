@@ -2,6 +2,7 @@ var util = require('util'),
     async = require('async'),
     ApiClass = require('./ApiClass'),
     User = require('../objects/User'),
+    apiConfig = require('../etc/api-config'),
     AuthToken = require('../objects/AuthToken'),
     passwordManager = new (require('../lib/Password'))();
 
@@ -9,6 +10,11 @@ var util = require('util'),
 /**
  * Authenticate a user.  Successfully authenticating will return a token
  * that can be used to authenticate future requests.
+ *
+ * <response>
+ *  token: UUID
+ *  timeout: Integer
+ * </response>
  *
  * @dev
  * @constructor
@@ -38,15 +44,15 @@ var Authenticate = function() {
                 }
 
                 if(result === false) {
-                    callback(null, {success: false, error: {message:"Password mismatch."}});
+                    callback({error: {message:"Password mismatch."}});
                     return;
                 }
 
                 var authToken = new AuthToken();
                 authToken.create(identifier, function(err, token){
-                    console.log(err);
-                    console.log(token);
-                    callback(err, {success: true, token: token});
+                    var timeout = Math.round((new Date()).getTime()/1000);
+                    timeout += apiConfig.Authenticate.timeout;
+                    callback(err, {token: token, timeout: timeout});
                 });
             });
         });

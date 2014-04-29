@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Webserver for the guesstimate apps",
   "main": "server.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@heroku.com:guesstimequestionserver.git"
+    "url": "git@heroku.com:guesstimate.git"
   },
   "dependencies":{
     "express": "4.1.0 ",

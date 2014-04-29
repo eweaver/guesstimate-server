@@ -1,6 +1,7 @@
 var util = require('util'),
     async = require('async'),
     ApiClass = require('./ApiClass'),
+    AuthToken = require('../objects/AuthToken'),
     User = require('../objects/User');
 
 /**
@@ -32,7 +33,7 @@ var Register = function() {
                     }
 
                     if(doesExist === true) {
-                        callback(null, {success: false, message: "User already exists with that id."});
+                        callback({message: "User already exists with that id."});
                         return;
                     }
 
@@ -44,10 +45,18 @@ var Register = function() {
             function(fCallback) {
                 user.create(identifier, name, password, function(err, userObject) {
                     if(err === null) {
-                        fCallback(null, {success: true});
+                        fCallback(null, userObject);
                     } else {
-                        fCallback(err, {success: false});
+                        fCallback(err, userObject);
                     }
+                });
+            },
+
+            // Generate auth token
+            function(user, fCallback) {
+                var authToken = new AuthToken();
+                authToken.create(user.getId(), function(err, token){
+                    fCallback(err, {success: true, token: token});
                 });
             }
         // Send back results
