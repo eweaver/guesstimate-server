@@ -8,7 +8,7 @@ var express = require("express"),
 app.use(logfmt.requestLogger());
 app = router.setRoutes(app);
 
-var port = Number(config.server.port);
+var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
     console.log("Listening on " + port);
 });
