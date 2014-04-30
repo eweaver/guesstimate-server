@@ -93,6 +93,27 @@ module.exports = {
         }
     },
 
+    // Game
+    createGame: {
+        method: "get",
+        file: "CreateGame",
+        type: "private",
+        sync: false,
+        devOnly: false,
+        params: {
+            "required": {
+                "categoryId": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "questionId": {
+                    "type": "string",
+                    "minlen": 1
+                }
+            }
+        }
+    },
+
 
     // Dev Mode Routes
     checkPassword: {

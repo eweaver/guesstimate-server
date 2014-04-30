@@ -16,5 +16,9 @@ module.exports = {
     Question: {
         implementation: "RedisQuestion",
         config: config.redis
+    },
+    Game: {
+        implementation: "RedisGame",
+        config: config.redis
     }
 };
