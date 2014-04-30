@@ -2,7 +2,8 @@ var util = require('util'),
     async = require('async'),
     ApiClass = require('./ApiClass'),
     AuthToken = require('../objects/AuthToken'),
-    User = require('../objects/User');
+    User = require('../objects/User'),
+    apiConfig = require('../etc/api-config');
 
 /**
  * Handle the registration of a new user.
@@ -56,7 +57,9 @@ var Register = function() {
             function(user, fCallback) {
                 var authToken = new AuthToken();
                 authToken.create(user.getId(), function(err, token){
-                    fCallback(err, {success: true, token: token});
+                    var timeout = Math.round((new Date()).getTime()/1000);
+                    timeout += apiConfig.Authenticate.timeout;
+                    fCallback(err, {token: token, timeout: timeout});
                 });
             }
         // Send back results

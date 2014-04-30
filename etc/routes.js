@@ -8,9 +8,21 @@ module.exports = {
         devOnly: false,
         params: {
             required: {
-                "name": "string",
-                "identifier": "string",
-                "password": "string"
+                "name": {
+                    "type": "string",
+                    "minlen": 1,
+                    "maxlen": 40
+                },
+                "identifier": {
+                    "type": "string",
+                    "minlen": 4,
+                    "maxlen": 16
+                },
+                "password": {
+                    "type": "string",
+                    "minlen": 8,
+                    "maxlen": 40
+                }
             },
             optional: {
 
@@ -25,8 +37,12 @@ module.exports = {
         devOnly: false,
         params: {
             required: {
-                "identifier": "string",
-                "password": "string"
+                "identifier": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
             }
         }
     },
@@ -50,7 +66,10 @@ module.exports = {
         devOnly: false,
         params: {
             "required": {
-                "categoryId": "string"
+                "categoryId": {
+                    "type": "string",
+                    "minlen": 1
+                }
             }
         }
     },
@@ -62,8 +81,14 @@ module.exports = {
         devOnly: false,
         params: {
             "required": {
-                "categoryId": "string",
-                "id": "string"
+                "categoryId": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "id": {
+                    "type": "string",
+                    "minlen": 1
+                }
             }
         }
     },
