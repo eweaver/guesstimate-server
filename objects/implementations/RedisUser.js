@@ -74,17 +74,20 @@ var RedisUser = function(redisConfig, id) {
      * @param {Function} callback
      */
     this.init = function(id, callback) {
-        console.log(id);
         _redisClient.hgetall(id, function(err, userObject) {
-            console.log(userObject);
             if(err === null) {
-                _isLoaded = true;
-                _id = id;
-                _name = userObject.n;
-                _passwordHash = userObject.p;
+                if(userObject !== null) {
+                    _isLoaded = true;
+                    _id = id;
+                    _name = userObject.n;
+                    _passwordHash = userObject.p;
+                    callback(err, userObject);
+                } else {
+                    callback({error:{message:"User does not exist."}});
+                }
+            } else {
+                callback(err);
             }
-
-            callback(err, userObject);
         });
     };
 
