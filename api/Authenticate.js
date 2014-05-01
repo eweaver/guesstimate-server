@@ -52,7 +52,7 @@ var Authenticate = function() {
                 authToken.create(identifier, function(err, token){
                     var timeout = Math.round((new Date()).getTime()/1000);
                     timeout += apiConfig.Authenticate.timeout;
-                    callback(err, {token: token, timeout: timeout});
+                    callback(err, {token: token, timeout: timeout, name:user.getName()});
                 });
             });
         });
