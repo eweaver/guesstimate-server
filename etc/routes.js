@@ -16,7 +16,7 @@ module.exports = {
                 "identifier": {
                     "type": "string",
                     "minlen": 4,
-                    "maxlen": 16
+                    "maxlen": 60
                 },
                 "password": {
                     "type": "string",
