@@ -62,6 +62,38 @@ var Game = function() {
     this.getGameData = function(gameId, callback) {
         return _implClass.getGameData(gameId, callback);
     };
+
+    /**
+     * Check if a game exists.
+     *
+     * @Param {String} gameId
+     * @param {Function<error, Object>} callback
+     */
+    this.exists = function(gameId, callback) {
+        return _implClass.exists(gameId, callback);
+    };
+
+    /**
+     * Invite a user to a game.
+     *
+     * @param {String} gameId
+     * @param {String} identifier
+     * @param {Function<error, Object>} callback
+     */
+    this.inviteUser = function(gameId, identifier, callback) {
+        return _implClass.inviteUser(identifier, callback);
+    };
+
+    /**
+     * Add a user to a game.
+     *
+     * @param {String} gameId
+     * @param {String} identifier
+     * @param {Function<error, Object>} callback
+     */
+    this.addUser = function(gameId, identifier, callback) {
+        return _implClass.addUser(gameId, identifier, callback);
+    };
 };
 
 module.exports = Game;

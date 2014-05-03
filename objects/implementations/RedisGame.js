@@ -12,6 +12,7 @@ var RedisGame = function(redisConfig) {
     var GAME_BASE_KEY = 'g:';
     var PLAYERS_KEY  = ':p';
     var PLAYER_GAME_LIST_KEY = 'my:';
+    var PLAYER_INVITES_LIST_KEY = 'in:';
 
     var _redisClient = createRedisClient(redisConfig);
 
@@ -38,7 +39,7 @@ var RedisGame = function(redisConfig) {
 
         // Players
         _redisClient.zadd(playersKey, 0, identifier);
-        _redisClient.expire(playersKey, config.Game.expiration);
+        _redisClient.expire(playersKey, config.Game.expiration + 60);
 
         // Add to my games (expire gameIds at some point)
         _redisClient.zadd(myGamesKey, timestamp, gameId);
@@ -94,6 +95,65 @@ var RedisGame = function(redisConfig) {
 
                 gameData.players = playersData;
                 callback(null, gameData);
+            });
+        });
+    };
+
+    /**
+     * Check if a game exists.
+     *
+     * @Param {String} gameId
+     * @param {Function<error, Object>} callback
+     */
+    this.exists = function(gameId, callback) {
+        var hashKey = GAME_BASE_KEY + gameId;
+        _redisClient.exists(hashKey, function(err, value) {
+            callback(err, (value == 1));
+        });
+    };
+
+    /**
+     * Invite a user to a game.
+     *
+     * @param {String} gameId
+     * @param {String} identifier
+     * @param {Function<error, Object>} callback
+     */
+    this.inviteUser = function(gameId, identifier, callback) {
+        var myInvitesKey = PLAYER_INVITES_LIST_KEY + identifier;
+
+        _redisClient.zadd(myInvitesKey, gameId, gameId, function(err) {
+            callback(err);
+        });
+    };
+
+    /**
+     * Add a user to a game.
+     *
+     * @param {String} gameId
+     * @param {String} identifier
+     * @param {Function<error, Object>} callback
+     */
+    this.addUser = function(gameId, identifier, callback) {
+        var hashKey = GAME_BASE_KEY + gameId;
+        var playersKey = hashKey + PLAYERS_KEY;
+        var myGamesKey = PLAYER_GAME_LIST_KEY + identifier;
+        var timestamp = Math.round((new Date()).getTime()/1000) + config.Game.expiration;
+
+        _redisClient.zadd(myGamesKey, timestamp, gameId, function(err) {
+            if(err !== null) {
+                callback(err);
+                return;
+            }
+
+            _redisClient.zadd(playersKey, 0, identifier, function(err) {
+                if(err !== null) {
+                    // Remove invite that has been accepted
+                    var myInvitesKey = PLAYER_INVITES_LIST_KEY + identifier;
+                    _redisClient.zrem(myInvitesKey. gameId);
+                }
+
+                callback(err);
             });
         });
     };

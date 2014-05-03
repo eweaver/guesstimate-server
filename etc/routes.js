@@ -122,8 +122,50 @@ module.exports = {
         params: {}
     },
 
+    // Invites
+    invite: {
+        method: "get",
+        file: "InviteUsers",
+        type: "private",
+        sync: false,
+        devOnly: false,
+        params: {
+            "required": {
+                "gameId": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "users": {
+                    "type": "array",
+                    "minlen": 1,
+                    "maxlen": 20
+                }
+            }
+        }
+    },
 
     // Dev Mode Routes
+    addUsers: {
+        method: "get",
+        file: "AddUsersToGame",
+        type: "private",
+        sync: false,
+        devOnly: true,
+        params: {
+            "required": {
+                "gameId": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "users": {
+                    "type": "array",
+                    "minlen": 1,
+                    "maxlen": 20
+                }
+            }
+        }
+    },
+
     checkPassword: {
         method: "get",
         file: "CheckPassword",
