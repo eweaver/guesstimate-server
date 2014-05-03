@@ -113,6 +113,14 @@ module.exports = {
             }
         }
     },
+    myGames: {
+        method: "get",
+        file: "MyGames",
+        type: "private",
+        sync: false,
+        devOnly: false,
+        params: {}
+    },
 
 
     // Dev Mode Routes

@@ -20,7 +20,6 @@ var CreateGame = function() {
     this.get = function(userObject, categoryId, questionId, callback) {
         var game = new Game();
 
-        console.log(userObject);
         game.create(categoryId, questionId, userObject.getId(), function(gameObject){
             callback(null, gameObject);
         });

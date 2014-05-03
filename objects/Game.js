@@ -42,6 +42,26 @@ var Game = function() {
     this.create = function(categoryId, questionId, identifier, callback) {
         return _implClass.create(categoryId, questionId, identifier, callback);
     };
+
+    /**
+     * Return a list of all active games
+     *
+     * @param {String} identifier
+     * @param {Function<error, Object>} callback
+     */
+    this.getAllById = function(identifier, callback) {
+        return _implClass.getAllById(identifier, callback);
+    };
+
+    /**
+     * Get game data for a single game Id
+     *
+     * @param {String} gameId
+     * @param {Function<error, Object>} callback
+     */
+    this.getGameData = function(gameId, callback) {
+        return _implClass.getGameData(gameId, callback);
+    };
 };
 
 module.exports = Game;
