@@ -25,7 +25,14 @@ module.exports = {
                 }
             },
             optional: {
-
+                "pushToken": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "pushType": {
+                    "type": "string",
+                    "minlen": 1
+                }
             }
         }
     },
@@ -42,6 +49,16 @@ module.exports = {
                 },
                 "password": {
                     "type": "string"
+                }
+            },
+            optional: {
+                "pushToken": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "pushType": {
+                    "type": "string",
+                    "minlen": 1
                 }
             }
         }

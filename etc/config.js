@@ -12,6 +12,9 @@ module.exports = {
         devMode: true
     },
     push: {
+        types: {
+            "iphone": "ApplePushNotifications"
+        },
         apple: {
             mode: "dev",
             appName: "app24573965",

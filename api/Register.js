@@ -19,9 +19,11 @@ var Register = function() {
      * @param {String} name
      * @param {String} identifier
      * @param {String} password
+     * @param {String} pushToken
+     * @param {String} pushType
      * @param {Function<error, Object>} callback
      */
-    this.get = function(userObject, name, identifier, password, callback) {
+    this.get = function(userObject, name, identifier, password, pushToken, pushType, callback) {
         var user = new User();
 
         async.waterfall([
@@ -51,6 +53,17 @@ var Register = function() {
                         fCallback(err, userObject);
                     }
                 });
+            },
+
+            // Save push tokens
+            function(user, fCallback) {
+                if( pushToken !== null && pushType !== null && typeof user.addPushToken === 'function') {
+                    user.addPushToken(pushToken, pushType, function(err) {
+                        fCallback(err, user);
+                    });
+                } else {
+                    fCallback(null, user);
+                }
             },
 
             // Generate auth token

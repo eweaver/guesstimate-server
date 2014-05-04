@@ -93,6 +93,26 @@ var User = function(id) {
     this.getPasswordHash = function() {
         return _implClass.getPasswordHash();
     };
+
+    /**
+     * Add a push token to a user.
+     *
+     * @param {String} token
+     * @param {String} type
+     * @param {Function} callback
+     */
+    this.addPushToken = function(token, type, callback) {
+        return _implClass.addPushToken(token, type, callback);
+    };
+
+    /**
+     * Return all push tokens registered to a user
+     *
+     * @param {Function} callback
+     */
+    this.getPushTokens = function(callback) {
+        return _implClass.getPushTokens(callback);
+    };
 };
 
 module.exports = User;

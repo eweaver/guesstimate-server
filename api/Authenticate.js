@@ -27,9 +27,11 @@ var Authenticate = function() {
      * @param {null} userObject
      * @param {String} identifier
      * @param {String} password
+     * @param {String} pushToken
+     * @param {String} pushType
      * @param {Function<error, String>} callback
      */
-    this.get = function(userObject, identifier, password, callback) {
+    this.get = function(userObject, identifier, password, pushToken, pushType, callback) {
         var user = new User(identifier);
         user.init(identifier, function(err) {
             if(err !== null) {
@@ -52,8 +54,18 @@ var Authenticate = function() {
                 authToken.create(identifier, function(err, token){
                     var timeout = Math.round((new Date()).getTime()/1000);
                     timeout += apiConfig.Authenticate.timeout;
-                    callback(err, {token: token, timeout: timeout, name:user.getName()});
+
+                    // Save push tokens
+                    if( pushToken !== null && pushType !== null && typeof user.addPushToken === 'function') {
+                        user.addPushToken(pushToken, pushType, function(err) {
+                            // Ignore push token errors at this point
+                            callback(err, {token: token, timeout: timeout, name:user.getName()});
+                        });
+                    } else {
+                        callback(err, {token: token, timeout: timeout, name:user.getName()});
+                    }
                 });
+
             });
         });
     };

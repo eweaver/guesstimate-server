@@ -12,6 +12,8 @@ var createRedisClient = require('../../lib/RedisClient');
  * @constructor
  */
 var RedisUser = function(redisConfig, id) {
+    var PUSH_TOKENS = ':ps';
+
     var _redisClient = createRedisClient(redisConfig);
     var _passwordManager = new (require('../../lib/Password'))();
     var _isLoaded = false;
@@ -126,6 +128,40 @@ var RedisUser = function(redisConfig, id) {
         }
 
         return _passwordHash;
+    };
+
+    /**
+     * Add a push token to a user.
+     *
+     * @param {String} token
+     * @param {String} type
+     * @param {Function} callback
+     */
+    this.addPushToken = function(token, type, callback) {
+        if(_id === null) {
+            throw new Error('Cannot add push token to invalid user.');
+        }
+
+        var pushTokensKey = _id + PUSH_TOKENS;
+        _redisClient.hset(pushTokensKey, token, type, function(err) {
+            callback(err);
+        });
+    };
+
+    /**
+     * Return all push tokens registered to a user
+     *
+     * @param {Function} callback
+     */
+    this.getPushTokens = function(callback) {
+        if(_id === null) {
+            throw new Error('Cannot get push tokens for an invalid user.');
+        }
+
+        var pushTokensKey = _id + PUSH_TOKENS;
+        _redisClient.hgetall(pushTokensKey, function(err, data) {
+            callback(err, data);
+        });
     };
 };
 
