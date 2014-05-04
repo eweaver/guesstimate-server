@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "5",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "Fastest production car 0-300 km/h, in seconds?",
+        "answer": 13.63
+    },
+    "2": {
+        "cat": "5",
+        "text": "Longest sailing ship in the world, in feet?",
+        "answer": 613
+    },
+    "3": {
+        "cat": "5",
+        "text": "Fastest bird in level flight, in mph?",
+        "answer": 78.9
     }
 }

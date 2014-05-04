@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "2",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "What year did Sean Connery last star as James Bond?",
+        "answer": 1971
+    },
+    "2": {
+        "cat": "2",
+        "text": "As of the end of 2013, what is the largest opening weekend, in US dollars?",
+        "answer": 207438708
+    },
+    "3": {
+        "cat": "2",
+        "text": "What is the total US box office gross for the Harry Potter series?",
+        "answer": 2390076596
     }
 }

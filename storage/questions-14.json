@@ -8,5 +8,10 @@
         "cat": "14",
         "text": "What year did the Miracle on Ice occur?",
         "answer": 1980
+    },
+    "3": {
+        "cat": "14",
+        "text": "Fastest recorded server in Tennis, in mph?",
+        "answer": 163.7
     }
 }

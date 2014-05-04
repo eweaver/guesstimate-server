@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "6",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "How many letters does the longest English word to not contain an 'e' have?",
+        "answer": 29
+    },
+    "2": {
+        "cat": "6",
+        "text": "How many letters does the longest English word to not contain a vowel have?",
+        "answer": 12
+    },
+    "3": {
+        "cat": "6",
+        "text": "How many letters does the longest English word contain?",
+        "answer": 189819
     }
 }

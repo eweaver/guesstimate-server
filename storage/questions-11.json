@@ -1,7 +1,12 @@
 {
     "1": {
         "cat": "11",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "How many Christmas cards, on an average, are sent in the US each year?",
+        "answer": 3000000000
+    },
+    "2": {
+        "cat": "11",
+        "text": "How many ghosts are there in A Christmas Carol?",
+        "answer": 4
     }
 }

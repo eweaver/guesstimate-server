@@ -1,7 +1,22 @@
 {
     "1": {
         "cat": "1",
-        "text": "How many alcohols does it take?",
-        "answer": 7
+        "text": "How long, in feet, is the longest bar in the world?",
+        "answer": 684
+    },
+    "2": {
+        "cat": "1",
+        "text": "What is the maximum proof possible through common distillation?",
+        "answer": 191.2
+    },
+    "3": {
+        "cat": "1",
+        "text": "What year did beer become available in cans?",
+        "answer": 1935
+    },
+    "4": {
+        "cat": "1",
+        "text": "How many bottles does the largest wine cellar in the world (Milestii Mici) contain?",
+        "answer": 2000000
     }
 }

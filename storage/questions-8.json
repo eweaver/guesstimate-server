@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "8",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "An electric eel can create shocks of up to how many volts?",
+        "answer": 650
+    },
+    "2": {
+        "cat": "8",
+        "text": "What year was the ASPCA founded?",
+        "answer": 1866
+    },
+    "3": {
+        "cat": "8",
+        "text": "How much did the largest pig weigh, in pounds?",
+        "answer": 2552
     }
 }

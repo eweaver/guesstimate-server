@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Webserver for the guesstimate apps",
   "main": "server.js",
   "scripts": {
@@ -18,7 +18,8 @@
     "hiredis": "0.1.16",
     "bcrypt": "0.7.8",
     "async": "0.7.0",
-    "uuid": "1.4.1"
+    "uuid": "1.4.1",
+    "apn": "1.5.2"
   },
   "author": "Eric Weaver",
   "license": "MIT",

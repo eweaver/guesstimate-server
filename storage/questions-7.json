@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "7",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "What year was the song, Baby Blue, released?",
+        "answer": 1971
+    },
+    "2": {
+        "cat": "7",
+        "text": "How many weeks did Hanson's 'MMMBop' stay at the number one postion?",
+        "answer": 13
+    },
+    "3": {
+        "cat": "7",
+        "text": "How much did the most expensive guitar sell for at auction?",
+        "answer": 2700000
     }
 }

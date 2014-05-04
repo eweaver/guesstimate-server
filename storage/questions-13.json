@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "13",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "What year was Napoleon's coronation as the French Monarch?",
+        "answer": 1805
+    },
+    "2": {
+        "cat": "13",
+        "text": "How large, in square miles, is the smallest island country in the world?",
+        "answer": 8.5
+    },
+    "3": {
+        "cat": "13",
+        "text": "What year was the Louisiana Purchase made?",
+        "answer": 1803
     }
 }

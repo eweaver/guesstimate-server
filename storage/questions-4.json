@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "4",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "What is the total length of all portions of the Great Wall of China, in miles?",
+        "answer": 13171
+    },
+    "2": {
+        "cat": "4",
+        "text": "What year was the city of Philadelphia founded?",
+        "answer": 1682
+    },
+    "3": {
+        "cat": "4",
+        "text": "What is the height of Mount Everest, in feet?",
+        "answer": 29029
     }
 }

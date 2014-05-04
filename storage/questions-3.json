@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "3",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "How many people watched the season finale of The Sopranos?",
+        "answer": 11900000
+    },
+    "2": {
+        "cat": "3",
+        "text": "Through Season 25, how many episodes of The Simpsons have been aired?",
+        "answer": 552
+    },
+    "3": {
+        "cat": "3",
+        "text": "In the series Mad Men, what year do Don and Better Draper get married?",
+        "answer": 1953
     }
 }

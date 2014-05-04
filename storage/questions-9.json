@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "9",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "As of 2014, what is Keanu Reeves net worth, in US dollars?",
+        "answer": 350000000
+    },
+    "2": {
+        "cat": "9",
+        "text": "What year was Jerry Springer mayor of Cincinnati?",
+        "answer": 1977
+    },
+    "3": {
+        "cat": "9",
+        "text": "What year was Tim Allen arrested for cocaine possession?",
+        "answer": 1978
     }
 }

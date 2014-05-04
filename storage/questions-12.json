@@ -1,7 +1,17 @@
 {
     "1": {
         "cat": "12",
-        "text": "Placeholder",
-        "answer": 1
+        "text": "How long, in kilometers, is the The Great Barrier Reef?",
+        "answer": 2000
+    },
+    "2": {
+        "cat": "12",
+        "text": "What percentage of people with autism are left handed?",
+        "answer": 9.65
+    },
+    "3": {
+        "cat": "12",
+        "text": "What is the surface temperature, in Celsius, of Mercury during the day?",
+        "answer": 430
     }
 }
