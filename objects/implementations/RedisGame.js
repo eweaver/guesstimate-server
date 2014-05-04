@@ -86,6 +86,12 @@ var RedisGame = function(redisConfig) {
                 return;
             }
 
+            if(gameData === null) {
+                // Remove bad games?
+                callback({error:{message:"Invalid game, no data found."}});
+                return;
+            }
+
             // get player data
             _redisClient.zrangebyscore(playersKey, '-inf', '+inf', function(err, playersData) {
                 if(err !== null) {
