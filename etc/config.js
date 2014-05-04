@@ -10,5 +10,21 @@ module.exports = {
     },
     app: {
         devMode: true
+    },
+    push: {
+        apple: {
+            mode: "dev",
+            appName: "app24573965",
+            dev: {
+                token: "v2BqeYcNd6h1CJwqoqay",
+                cert: "dev-cert.pem",
+                key: "dev-key.pem"
+            },
+            production: {
+                token: "NszW7ry1zjrR7BSiosWf",
+                cert: "prod-cert.pem",
+                key: "prod-key.pem"
+            }
+        }
     }
 };
