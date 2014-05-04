@@ -113,6 +113,21 @@ module.exports = {
             }
         }
     },
+    game: {
+        method: "get",
+        file: "GameApi",
+        type: "private",
+        sync: false,
+        devOnly: false,
+        params: {
+            "required": {
+                "gameId": {
+                    "type": "string",
+                    "minlen": 1
+                }
+            }
+        }
+    },
     myGames: {
         method: "get",
         file: "MyGames",

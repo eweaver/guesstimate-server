@@ -5,6 +5,8 @@ var util = require('util'),
 /**
  * Handle the registration of a new user.
  *
+ * RENAME QUESTION-API
+ *
  * @constructor
  */
 var QuestionList = function() {
