@@ -1,4 +1,5 @@
 var createRedisClient = require('../../lib/RedisClient'),
+    async = require('async'),
     config = require('../../etc/api-config'),
     uuid = require('uuid');
 
@@ -161,6 +162,62 @@ var RedisGame = function(redisConfig) {
 
                 callback(err);
             });
+        });
+    };
+
+    /**
+     * Record an answer
+     *
+     * @param {String} gameId
+     * @param {String} identifier
+     * @param {Number} answer
+     * @param {Function<error, Object>} callback
+     */
+    this.recordAnswer = function(gameId, identifier, answer, callback) {
+        var hashKey = GAME_BASE_KEY + gameId;
+        var playersKey = hashKey + PLAYERS_KEY;
+
+        _redisClient.zadd(playersKey, answer, identifier, function(err) {
+            callback(err);
+        });
+    };
+
+    /**
+     * Get all scores for game.
+     *
+     * @param {String} gameId
+     * @param {Function<error, Object>} callback
+     */
+    this.getScores = function(gameId, callback) {
+        var hashKey = GAME_BASE_KEY + gameId;
+        var playersKey = hashKey + PLAYERS_KEY;
+
+        _redisClient.zrangebyscore(playersKey, '-inf', '+inf', function(err, playersData) {
+            if(err !== null) {
+                callback(err);
+                return;
+            }
+
+            var scores = {};
+
+            async.each(playersData, function(userIdentifier, aCallback) {
+                    _redisClient.zscore(playersKey, userIdentifier, function(err, score) {
+                        if(err !== null) {
+                            throw new Error('Unable to load scores data for ' + userIdentifier + ', game ' + gameId);
+                        }
+
+                        scores[ userIdentifier ] = score;
+                        aCallback();
+                    });
+                },
+                function(err) {
+                    if(err === null || typeof err === 'undefined') {
+                        callback(null, scores);
+                    } else {
+                        callback(err);
+                    }
+
+                });
         });
     };
 };

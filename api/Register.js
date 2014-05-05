@@ -57,6 +57,8 @@ var Register = function() {
 
             // Save push tokens
             function(user, fCallback) {
+                console.log(pushToken);
+                console.log(pushType);
                 if( pushToken !== null && pushType !== null && typeof user.addPushToken === 'function') {
                     user.addPushToken(pushToken, pushType, function(err) {
                         fCallback(err, user);

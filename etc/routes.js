@@ -153,6 +153,25 @@ module.exports = {
         devOnly: false,
         params: {}
     },
+    answer: {
+        method: "get",
+        file: "Answer",
+        type: "private",
+        sync: false,
+        devOnly: false,
+        params: {
+            "required": {
+                "gameId": {
+                    "type": "string",
+                    "minlen": 1
+                },
+                "answer": {
+                    "type": "string",
+                    "minlen": 1
+                }
+            }
+        }
+    },
 
     // Invites
     invite: {

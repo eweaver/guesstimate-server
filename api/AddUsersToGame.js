@@ -3,7 +3,7 @@ var util = require('util'),
     ApiClass = require('./ApiClass'),
     User = require('../objects/User'),
     Game = require('../objects/Game'),
-    ApplePushNotifications = require('../lib/ApplePushNotifications');
+    PushNotifications = require('../lib/PushNotifications');
 
 /**
  * Invite users to join a game.
@@ -34,7 +34,7 @@ var AddUsersToGame = function() {
             }
 
             var usersAdded = [];
-            var pushNotifications = new ApplePushNotifications();
+            var pushNotifications = new PushNotifications();
 
             async.each(users, function(userIdentifier, aCallback) {
                     game.addUser(gameId, userIdentifier, function(err) {
@@ -45,10 +45,11 @@ var AddUsersToGame = function() {
                             user.init(userIdentifier, function(err, userData) {
                                 if(err === null) {
                                     usersAdded.push({id: userIdentifier, name: user.getName()});
-                                    pushNotifications.send('device', userObject.getName() + ' invited you to a game!', {gameId: gameId}, function(){});
+                                    user.getPushTokens(function(err, devices) {
+                                        pushNotifications.send(devices, userObject.getName() + ' invited you to a game!', {gameId: gameId, type:"gameInvite"}, function(){});
+                                        aCallback();
+                                    });
                                 }
-
-                                aCallback();
                             });
                         }
                     });
